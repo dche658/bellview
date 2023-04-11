@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ButtonType?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DialogPane?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<DialogPane headerText="Import Data" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="438.0" prefWidth="522.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dwc.bellview.FileImportController">
+    <expandableContent>
+      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="320.0" />
+    </expandableContent>
+   <content>
+      <BorderPane prefHeight="200.0" prefWidth="200.0">
+         <top>
+            <AnchorPane prefHeight="38.0" prefWidth="499.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Label layoutY="11.0" text="Field Separator">
+                     <padding>
+                        <Insets left="5.0" right="10.0" />
+                     </padding>
+                  </Label>
+                  <CheckBox fx:id="commaCheckBox" layoutX="124.0" layoutY="10.0" mnemonicParsing="false" onAction="#commaCheckboxChanged" selected="true" text="Comma">
+                     <padding>
+                        <Insets right="10.0" />
+                     </padding>
+                  </CheckBox>
+                  <CheckBox fx:id="tabCheckBox" layoutX="209.0" layoutY="10.0" mnemonicParsing="false" onAction="#tabCheckboxChanged" text="Tab">
+                     <padding>
+                        <Insets right="10.0" />
+                     </padding>
+                  </CheckBox>
+                  <CheckBox fx:id="otherCheckBox" layoutX="268.0" layoutY="10.0" mnemonicParsing="false" onAction="#otherCheckboxChanged" text="Other">
+                     <padding>
+                        <Insets right="5.0" />
+                     </padding>
+                  </CheckBox>
+                  <TextField fx:id="sepTextField" layoutX="340.0" layoutY="7.0" onAction="#sepTextFieldChanged" prefHeight="24.0" prefWidth="24.0" />
+               </children>
+            </AnchorPane>
+         </top>
+         <center>
+            <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <top>
+                  <VBox prefHeight="74.0" prefWidth="499.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <VBox prefHeight="102.0" prefWidth="501.0">
+                           <children>
+                              <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                                 <children>
+                                    <CheckBox fx:id="firstRowHeadingCheckBox" layoutX="6.0" layoutY="5.0" mnemonicParsing="false" onAction="#firstRowHeadingChanged" prefHeight="12.0" prefWidth="203.0" selected="true" text="First row contains headings" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                                 <children>
+                                    <Label layoutX="5.0" layoutY="3.0" style="-fx-font-weight: bold;" text="Columns to be imported">
+                                       <padding>
+                                          <Insets bottom="5.0" top="10.0" />
+                                       </padding>
+                                    </Label>
+                                 </children>
+                              </AnchorPane>
+                              <GridPane>
+                                <columnConstraints>
+                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                </columnConstraints>
+                                <rowConstraints>
+                                  <RowConstraints minHeight="20.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                  <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                </rowConstraints>
+                                 <children>
+                                    <ComboBox fx:id="valueComboBox" onAction="#valueColumnChanged" prefWidth="150.0" GridPane.rowIndex="1">
+                                       <GridPane.margin>
+                                          <Insets left="5.0" right="5.0" />
+                                       </GridPane.margin>
+                                    </ComboBox>
+                                    <Label text="Value column">
+                                       <GridPane.margin>
+                                          <Insets left="5.0" />
+                                       </GridPane.margin>
+                                    </Label>
+                                    <ComboBox fx:id="sexComboBox" onAction="#sexColumnChanged" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                       <GridPane.margin>
+                                          <Insets left="5.0" right="5.0" />
+                                       </GridPane.margin>
+                                    </ComboBox>
+                                    <Label text="Gender column" GridPane.columnIndex="1">
+                                       <GridPane.margin>
+                                          <Insets left="5.0" right="5.0" />
+                                       </GridPane.margin>
+                                    </Label>
+                                    <Label text="Age column" GridPane.columnIndex="2">
+                                       <GridPane.margin>
+                                          <Insets left="5.0" right="5.0" />
+                                       </GridPane.margin>
+                                    </Label>
+                                    <ComboBox fx:id="ageComboBox" onAction="#ageColumnChanged" prefWidth="150.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                                       <GridPane.margin>
+                                          <Insets left="5.0" right="5.0" />
+                                       </GridPane.margin>
+                                    </ComboBox>
+                                 </children>
+                              </GridPane>
+                           </children>
+                        </VBox>
+                     </children>
+                  </VBox>
+               </top>
+               <center>
+                  <TableView fx:id="dataTableView" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                    <columns>
+                      <TableColumn prefWidth="75.0" text="C1" />
+                      <TableColumn prefWidth="75.0" text="C2" />
+                    </columns>
+                     <BorderPane.margin>
+                        <Insets left="5.0" right="5.0" />
+                     </BorderPane.margin>
+                  </TableView>
+               </center>
+            </BorderPane>
+         </center>
+      </BorderPane>
+   </content>
+   <buttonTypes>
+      <ButtonType fx:constant="OK" />
+      <ButtonType fx:constant="CANCEL" />
+   </buttonTypes>
+   <opaqueInsets>
+      <Insets />
+   </opaqueInsets>
+   <header>
+      <AnchorPane>
+         <children>
+            <Label style="-fx-font-weight: bold;" text="Import Data">
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+            </Label>
+         </children>
+      </AnchorPane>
+   </header>
+</DialogPane>

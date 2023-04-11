@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  Copyright (c) 2015, 2019, Gluon and/or its affiliates.
+  All rights reserved. Use is subject to license terms.
+
+  This file is available and licensed under the following license:
+
+  Redistribution and use in source and binary forms, with or without
+  modification, are permitted provided that the following conditions
+  are met:
+
+  - Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+  - Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in
+    the documentation and/or other materials provided with the distribution.
+  - Neither the name of Oracle Corporation nor the names of its
+    contributors may be used to endorse or promote products derived
+    from this software without specific prior written permission.
+
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+  A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+  OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+  LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+  THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+-->
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dwc.bellview.FXMLController">
+   <top>
+    <MenuBar prefHeight="22.0" prefWidth="640.0" BorderPane.alignment="CENTER">
+      <menus>
+        <Menu mnemonicParsing="false" text="File">
+          <items>
+            <MenuItem mnemonicParsing="false" onAction="#importDataAction" text="Import Data" />
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem fx:id="exportPdfMenuItem" disable="true" mnemonicParsing="false" onAction="#exportPdfMenuAction" text="Export PDF" />
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem mnemonicParsing="false" onAction="#quit" text="Quit" />
+          </items>
+        </Menu>
+        <Menu mnemonicParsing="false" text="Options">
+          <items>
+            <MenuItem mnemonicParsing="false" onAction="#dataTransformMenuAction" text="Data Transform" />
+                  <MenuItem mnemonicParsing="false" onAction="#filterDataMenuAction" text="Filter Data" />
+          </items>
+        </Menu>
+        <Menu mnemonicParsing="false" text="Help">
+          <items>
+            <MenuItem mnemonicParsing="false" onAction="#aboutMenuAction" text="About Bellview" />
+          </items>
+        </Menu>
+      </menus>
+    </MenuBar>
+   </top>
+   <center>
+      <BorderPane prefHeight="373.0" prefWidth="640.0" BorderPane.alignment="CENTER">
+         <bottom>
+            <AnchorPane BorderPane.alignment="CENTER">
+               <BorderPane.margin>
+                  <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
+               </BorderPane.margin>
+               <children>
+                  <Label fx:id="statusLabel" prefHeight="23.0" prefWidth="397.0" text="Status Label">
+                     <padding>
+                        <Insets left="5.0" />
+                     </padding>
+                  </Label>
+                  <ProgressBar fx:id="progressBar" disable="true" layoutX="594.0" layoutY="3.0" prefWidth="200.0" visible="false">
+                     <padding>
+                        <Insets right="5.0" />
+                     </padding>
+                  </ProgressBar>
+               </children>
+            </AnchorPane>
+         </bottom>
+         <left>
+            <BorderPane prefHeight="350.0" prefWidth="304.0" BorderPane.alignment="CENTER">
+               <top>
+                  <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                     <top>
+                        <AnchorPane prefHeight="34.0" prefWidth="310.0" BorderPane.alignment="CENTER">
+                           <children>
+                              <Label layoutX="14.0" layoutY="12.0" text="Analyte">
+                                 <padding>
+                                    <Insets right="3.0" />
+                                 </padding>
+                              </Label>
+                              <TextField fx:id="analyte" layoutX="67.0" layoutY="8.0" prefHeight="24.0" prefWidth="119.0" />
+                              <Label layoutX="218.0" layoutY="12.0" text="Units">
+                                 <padding>
+                                    <Insets right="3.0" />
+                                 </padding>
+                              </Label>
+                              <TextField fx:id="units" layoutX="255.0" layoutY="8.0" prefHeight="24.0" prefWidth="74.0" />
+                           </children>
+                           <padding>
+                              <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
+                           </padding>
+                        </AnchorPane>
+                     </top>
+                     <bottom>
+                        <AnchorPane prefHeight="86.0" prefWidth="337.0" BorderPane.alignment="CENTER">
+                           <children>
+                              <Label layoutX="14.0" layoutY="6.0" text="Regression Parameters" />
+                              <GridPane layoutX="14.0" layoutY="22.0" prefHeight="59.0" prefWidth="159.0">
+                                <columnConstraints>
+                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                </columnConstraints>
+                                <rowConstraints>
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                </rowConstraints>
+                                 <children>
+                                    <Label text="Start Index" />
+                                    <Label text="End Index" GridPane.rowIndex="1" />
+                                    <Spinner fx:id="regIndexStart" editable="true" GridPane.columnIndex="1" />
+                                    <Spinner fx:id="regIndexEnd" editable="true" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                 </children>
+                              </GridPane>
+                              <Button layoutX="259.0" layoutY="52.0" mnemonicParsing="false" onAction="#analyze" text="Analyse" />
+                           </children>
+                        </AnchorPane>
+                     </bottom>
+                     <center>
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                           <children>
+                              <Label layoutX="14.0" layoutY="6.0" text="Histogram Parameters" />
+                              <GridPane layoutX="14.0" layoutY="25.0" prefHeight="87.0" prefWidth="172.0">
+                                <columnConstraints>
+                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                </columnConstraints>
+                                <rowConstraints>
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                </rowConstraints>
+                                 <children>
+                                    <Label text="Min Value" />
+                                    <Label text="Max Value" GridPane.rowIndex="1" />
+                                    <Label text="Bin Width" GridPane.rowIndex="2" />
+                                    <TextField fx:id="histogramMin" GridPane.columnIndex="1" />
+                                    <TextField fx:id="histogramMax" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                    <TextField fx:id="histogramBinWidth" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                 </children>
+                              </GridPane>
+                              <Button layoutX="206.0" layoutY="86.0" mnemonicParsing="false" onAction="#buildHistogram" text="Build Histogram" />
+                           </children>
+                        </AnchorPane>
+                     </center>
+                  </BorderPane>
+               </top>
+               <opaqueInsets>
+                  <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
+               </opaqueInsets>
+               <padding>
+                  <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
+               </padding>
+               <center>
+                  <TableView fx:id="histogramTable" prefHeight="302.0" prefWidth="338.0" BorderPane.alignment="CENTER">
+                    <columns>
+                      <TableColumn editable="false" prefWidth="75.0" text="Index" />
+                      <TableColumn editable="false" prefWidth="75.0" text="Bin" />
+                        <TableColumn editable="false" prefWidth="75.0" text="Count" />
+                        <TableColumn editable="false" prefWidth="91.0" text="Delta Log Y" />
+                    </columns>
+                     <BorderPane.margin>
+                        <Insets left="5.0" right="5.0" />
+                     </BorderPane.margin>
+                  </TableView>
+               </center>
+            </BorderPane>
+         </left>
+         <center>
+            <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+              <tabs>
+                <Tab closable="false" text="Analysis">
+                     <content>
+                        <VBox fx:id="analysisVBox" prefHeight="200.0" prefWidth="100.0" />
+                     </content>
+                </Tab>
+                <Tab closable="false" text="Residuals">
+                     <content>
+                        <VBox prefHeight="200.0" prefWidth="100.0">
+                           <children>
+                              <BarChart fx:id="residualsChart" legendVisible="false" title="Residuals Plot">
+                                <xAxis>
+                                  <CategoryAxis label="Value" side="BOTTOM" />
+                                </xAxis>
+                                <yAxis>
+                                  <NumberAxis label="Residual" side="LEFT" />
+                                </yAxis>
+                              </BarChart>
+                           </children>
+                        </VBox>
+                     </content>
+                </Tab>
+                  <Tab closable="false" text="Report">
+                     <content>
+                        <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" prefHeight="200.0">
+                           <content>
+                              <TextArea fx:id="reportArea" prefHeight="200.0" prefWidth="200.0" />
+                           </content>
+                        </ScrollPane>
+                     </content>
+                  </Tab>
+              </tabs>
+               <BorderPane.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </BorderPane.margin>
+            </TabPane>
+         </center>
+      </BorderPane>
+   </center>
+</BorderPane>
