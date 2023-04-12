@@ -9,4 +9,4 @@
 
 rootProject.name = 'bellview'
 include('app')
-project(':app').name = 'Bellview'
+project(':app').name = 'bellview'

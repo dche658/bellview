@@ -100,14 +100,17 @@ public class BellviewModel {
 		this.histogram = histogram;
 	}
 	
+	@SuppressWarnings("exports")
 	public DescriptiveStatistics getStatistics() {
 		return statistics;
 	}
 
+	@SuppressWarnings("exports")
 	public void setStatistics(DescriptiveStatistics statistics) {
 		this.statistics = statistics;
 	}
 	
+	@SuppressWarnings("exports")
 	public DescriptiveStatistics buildStatistics() {
 		statistics.clear();
 		subset.forEach(d -> {
@@ -130,6 +133,7 @@ public class BellviewModel {
 		});
 	}
 	
+	@SuppressWarnings("exports")
 	public SimpleRegression calculateRegression() throws BellviewException {
         this.regression = new SimpleRegression();
         if (endIndex.get() >= histogram.getElements().size()) {
@@ -145,6 +149,7 @@ public class BellviewModel {
         return regression;
     }
 	
+	@SuppressWarnings("exports")
 	public DistributionParameters getDistributionParameters(SimpleRegression reg) {
         DistributionParameters parameters = new DistributionParameters();
         double xIntercept = (0 - reg.getIntercept()) / reg.getSlope();
