@@ -66,6 +66,14 @@ The source code is available from
 
 ## SHA 256 checksum
 
+### Windows
+
+CertUtil -hashfile InFile SHA256
+
+1fa636e55276072db917db74cd02286bc9ccc69d45e9921a698acbe056a30098  bellview-2.0.0.exe
+
+0ea99bce4c6a2a66b58eadcb9789c2642d93ede7b7bca795670dc5fe9c2e75d9  bellview-2.0.0.zip
+
 8f00dbd9644cf26382e65a3a9b5ae25349afda27789e78de1c6105cae1a6078f  bellview_2.0.0-linux_amd64.deb
 
 74ec9352c9d4e806e688bc6b0a0d7ad5194a94bde5776e7cb455095cae769195  Bellview-2.0.0-linux.tar
