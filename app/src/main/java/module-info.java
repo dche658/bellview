@@ -2,7 +2,6 @@ module bellview {
 	exports dwc.bellview.file;
 	exports dwc.bellview.transform;
 	exports dwc.bellview;
-	//exports dwc.bellview.export;
 	exports dwc.bellview.model;
 	
 	opens dwc.bellview to javafx.fxml;
