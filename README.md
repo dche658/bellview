@@ -64,25 +64,3 @@ The source code is available from
 
 - Some time ago. I cannot remember when.
 
-## Checksums
-
-**In Windows you can use the following command to calculate the checksum.**
-
-CertUtil -hashfile InFile SHA256
-
-1fa636e55276072db917db74cd02286bc9ccc69d45e9921a698acbe056a30098  bellview-2.0.0-win.exe
-
-0ea99bce4c6a2a66b58eadcb9789c2642d93ede7b7bca795670dc5fe9c2e75d9  bellview-2.0.0-win.zip
-
-**In Linux you can use the following command to calculate the check sum**
-
-shasum -a 256 InFile
-
-feb47b11ba8a084c357aa995330384377ea5bb1189d8003708fc9f6951a029b2  bellview_2.0.0-linux-amd64.deb
-
-186ecea5f742a6e274f747b12b875c585b4de13934d9684864dd5c3f85f79887  bellview-2.0.0-linux.tar
-
-4b3373e4181395cbc78d17eeab9340852c67219da19ce4a84e3e2be0b430f963  bellview-2.0.0-linux.zip
-
-
-c04a65567234850e862fa21ff5c5a3cc220cb71a712bd961aa99f7274db18d25 Bellview-1.2.6-bin.zip

@@ -58,7 +58,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dwc.bellview.FXMLController">
+<BorderPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dwc.bellview.FXMLController">
    <top>
     <MenuBar prefHeight="22.0" prefWidth="640.0" BorderPane.alignment="CENTER">
       <menus>

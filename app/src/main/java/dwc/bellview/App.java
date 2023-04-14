@@ -23,20 +23,20 @@ import javafx.stage.Stage;
  */
 public class App extends Application {
 
+	
 	public static void main(String[] args) {
 		//Manual logging configuration as Logback is unable to find
 		//logback.xml configuration file
-		LoggerContext lc = (LoggerContext) LoggerFactory.getILoggerFactory();
+		LoggerContext context = (LoggerContext) LoggerFactory.getILoggerFactory();
 		try {
 			JoranConfigurator configurator = new JoranConfigurator();
-			configurator.setContext(lc);
-			// Call context.reset() to clear any previous configuration, e.g. default
-			// configuration. For multi-step configuration, omit calling context.reset().
-			lc.reset();
+			configurator.setContext(context);
+			context.reset();
 			configurator.doConfigure(App.class.getResourceAsStream("/logback.xml"));
 		} catch (JoranException je) {
-			StatusPrinter.print(lc);
+			//
 		}
+		StatusPrinter.printInCaseOfErrorsOrWarnings(context);
 		launch(args);
 	}
 

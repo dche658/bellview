@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<DialogPane prefHeight="140.0" prefWidth="360.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dwc.bellview.FilterDialogController">
+<DialogPane prefHeight="140.0" prefWidth="360.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dwc.bellview.FilterDialogController">
    <buttonTypes>
       <ButtonType fx:constant="CANCEL" />
       <ButtonType fx:constant="OK" />
