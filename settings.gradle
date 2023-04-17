@@ -8,5 +8,5 @@
  */
 
 rootProject.name = 'bellview'
-include('app')
-project(':app').name = 'bellview'
+include 'app', 'test'
+

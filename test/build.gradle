@@ -1,0 +1,28 @@
+
+plugins {
+    id 'java'
+    id 'eclipse'
+    id 'org.openjfx.javafxplugin' version '0.0.13'
+}
+
+javafx {
+    version = "20"
+    modules = [ 'javafx.controls', 'javafx.fxml', 'javafx.swing' ]
+}
+
+repositories {
+    // Use Maven Central for resolving dependencies.
+    mavenCentral()
+}
+
+dependencies {
+    // Use JUnit Jupiter for testing.
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.8.2'
+	
+	implementation project(':app')
+}
+
+tasks.named('test') {
+    // Use JUnit Platform for unit tests.
+    useJUnitPlatform()
+}

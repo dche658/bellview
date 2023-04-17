@@ -13,6 +13,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 /**
@@ -52,6 +53,7 @@ public class App extends Application {
 		Scene scene = new Scene(root, 800, 600);
 		scene.getStylesheets().add(App.class.getResource("style.css").toExternalForm());
 		primaryStage.setTitle("Bellview");
+		primaryStage.getIcons().add(new Image(App.class.getResourceAsStream("/dwc/bellview/rie.png")));
 		primaryStage.setScene(scene);
 		primaryStage.show();
 	}

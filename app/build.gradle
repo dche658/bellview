@@ -7,7 +7,6 @@ plugins {
     id 'eclipse'
     id 'org.openjfx.javafxplugin' version '0.0.13'
     id 'org.beryx.jlink' version '2.26.0'
-    // id 'org.beryx.runtime' version '1.13.0'
 }
 
 group = 'dwc'
@@ -15,7 +14,7 @@ version = '2.0.0'
 description = 'Bellview'
 
 javafx {
-    version = "17.0.6"
+    version = "20"
     modules = [ 'javafx.controls', 'javafx.fxml', 'javafx.swing' ]
 }
 
@@ -27,7 +26,6 @@ repositories {
 dependencies {
     // Use JUnit Jupiter for testing.
     testImplementation 'org.junit.jupiter:junit-jupiter:5.8.2'
-
 	
 	implementation group: 'org.apache.commons', name: 'commons-math3', version: '3.6.1'
 	implementation group: 'org.apache.poi', name: 'poi', version: '5.2.3'
@@ -61,8 +59,8 @@ jlink {
     options = ['--strip-debug', '--compress', '2', '--no-header-files', '--no-man-pages', '--bind-services']
 
     launcher {
-        noConsole = true
         name = 'bellview'
+        noConsole = "true"
     }
     jpackage {
     	

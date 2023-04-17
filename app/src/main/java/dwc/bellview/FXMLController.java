@@ -402,6 +402,7 @@ public class FXMLController {
 			final FXMLLoader loader = new FXMLLoader(getClass().getResource("transformDialog.fxml"));
 			Dialog<ButtonType> transformDlg = new Dialog<ButtonType>();
 			transformDlg.setDialogPane(loader.load());
+			transformDlg.setTitle(BellviewUtils.getMessage("label.transforms"));
 			
 			DataTransformDialogController controller = (DataTransformDialogController) loader.getController();
 			controller.setDataTransform(model.getDataTransform());
@@ -472,6 +473,7 @@ public class FXMLController {
 			final FXMLLoader loader = new FXMLLoader(getClass().getResource("filterDialog.fxml"));
 			Dialog<ButtonType> dlg = new Dialog<ButtonType>();
 			dlg.setDialogPane(loader.load());
+			dlg.setTitle(BellviewUtils.getMessage("label.filters"));
 			FilterDialogController controller = (FilterDialogController) loader.getController();
 			controller.setModel(model);
 			Optional<ButtonType> buttonType = dlg.showAndWait();
@@ -614,10 +616,13 @@ public class FXMLController {
 	 */
 	public void aboutMenuAction(ActionEvent evt) {
 		StringBuilder msg = new StringBuilder();
-		msg.append("Bellview\n");
-		msg.append("Version: ").append(BellviewUtils.getMessage("application.version")).append("\n");
-		msg.append("Build: ").append(BellviewUtils.getMessage("application.build.time"));
+		msg.append(BellviewUtils.getMessage("label.version")).append(": ").append(BellviewUtils.getMessage("application.version")).append(" ");
+		msg.append(BellviewUtils.getMessage("label.build")).append(": ").append(BellviewUtils.getMessage("application.build.time")).append("\n");
+		msg.append(BellviewUtils.getMessage("label.javafx.version")).append(": ").append(System.getProperty("javafx.runtime.version")).append("\n");
+		msg.append(BellviewUtils.getMessage("label.java.version")).append(": ").append(System.getProperty("java.version")).append("\n\n");
+		msg.append(BellviewUtils.getMessage("label.author")).append(": ").append(BellviewUtils.getMessage("application.author"));
 		Alert about = new Alert(Alert.AlertType.NONE, msg.toString(), ButtonType.OK);
+		about.setTitle(BellviewUtils.getMessage("label.about"));
 		about.show();
 	}
 
