@@ -24,13 +24,14 @@ repositories {
 }
 
 dependencies {
-    // Use JUnit Jupiter for testing.
-    testImplementation 'org.junit.jupiter:junit-jupiter:5.8.2'
-	
+    
 	implementation group: 'org.apache.commons', name: 'commons-math3', version: '3.6.1'
 	implementation group: 'org.apache.poi', name: 'poi', version: '5.2.3'
 	implementation group: 'org.apache.poi', name: 'poi-ooxml', version: '5.2.3'
 	implementation group: 'com.itextpdf', name: 'itextpdf', version: '5.5.13.3'
+	// https://mvnrepository.com/artifact/com.itextpdf/itext7-core
+	//implementation 'com.itextpdf:itext7-core:7.2.5'
+
 	implementation group: 'org.slf4j', name: 'slf4j-api', version: '2.0.0'
 	
 	implementation group: 'ch.qos.logback', name: 'logback-classic', version: '1.4.0'
@@ -66,7 +67,8 @@ jlink {
     	
         if (org.gradle.internal.os.OperatingSystem.current().windows) {
             installerOptions += ['--win-per-user-install', '--win-dir-chooser', '--win-menu', '--win-shortcut']
-            imageOptions += ['--win-console', '--icon', 'src/main/resources/dwc/bellview/rie.ico']
+            installerType = "exe"
+            imageOptions += ['--icon', 'src/main/resources/dwc/bellview/rie.ico']
         }
         else if (org.gradle.internal.os.OperatingSystem.current().linux) {
             installerOptions += ['--linux-package-name', 'bellview','--linux-shortcut']

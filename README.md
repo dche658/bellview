@@ -12,17 +12,55 @@ data.
 
 ## Installation
 
-If a Java Runtime Environment is not available on your system you can install from the packages that include a JRE. If you do have a JRE you have the option of running from the binary distribution files. If using the latter, the archive should be extracted before executing the bin/Bellview (linux) or bin/Bellview.bat (windows) script. 
+If a Java Runtime Environment (JRE) or Java Development Kit (JDK) is not 
+available on your system you can install from one of the installer packages 
+(deb file on Linux or exe on Windows). These include a JRE image and
+should run out of the box once installation is complete.
 
-- bellview_2.0.0-linux_amd64.deb Application image that include a Java Runtime Environment
-- Bellview-2.0.0-linux.tar Binary distribution for Linux
-- Bellview-2.0.0-linux.zip Binary distriubtion for Linux
+If you do have a JRE or JDK installed (Version 17 or later is required) 
+you have the option of running from the binary distribution files
+(tar or zip archives). Suitable JREs or JDKs are available from 
+[https://adoptium.net/](https://adoptium.net/) or 
+[https://www.azul.com/](https://www.azul.com/)
 
-The source code is available from
-[https://github.com/dche658/bellview](https://github.com/dche658/bellview)
+Extract the zip or tar archive and execute the startup script for your
+operating system
+
+Windows
+
+	bin/bellview.bat
+	
+Linux
+
+	bin/bellview
+
+Mac owners will need to build the application from the source files which
+are available at
+[https://github.com/dche658/bellview](https://github.com/dche658/bellview).
+Windows and Linux users have the option of doing the same if they wish.
+
+At the GitHub repository, if you click on the green "<> Code" button you 
+should see a link to "Download ZIP". Download and then extract the
+bellview-master.zip archive.
+
+Open a terminal window and change to the bellview-master directory.
+
+Run the command 
+
+    gradlew assemble
+    
+Hopefully, this will download all the necessary dependencies and install the zip 
+distribution archive in the /bellview-master/app/build/distributions
+directory. This is best done when you are not behind a corporate firewall.
 
 
 ## Change log
+
+### Version 2.0.0 beta 3: 18 April 2023
+
+- add window icon
+- fixes to dialog titles
+- bump to javafx 20
 
 ### Version 2.0.0 beta 2: 11 April 2023
 
