@@ -506,8 +506,10 @@ public class FXMLController {
 		try {
 			//Open a file chooser and select the file containing user data
 			String directoryString = preferences.get(DEFAULT_FILE_IMPORT_DIRECTORY, ".");
+			File directory = new File(directoryString);
+			if (!directory.exists()) directory = new File(".");
 			FileChooser fileChooser = new FileChooser();
-			fileChooser.setInitialDirectory(new File(directoryString));
+			fileChooser.setInitialDirectory(directory);
 			fileChooser.setTitle("Open Resource File");
 			fileChooser.getExtensionFilters().addAll(new ExtensionFilter("Text Files", "*.csv", "*.txt"),
 					new ExtensionFilter("Excel Files", "*.xlsx"));

@@ -7,7 +7,12 @@ module bellview {
 	opens dwc.bellview to javafx.fxml;
 
 	requires commons.math3;
-	requires itextpdf;
+	//requires itextpdf;
+	requires pdfa;
+	requires commons;
+	requires layout;
+	requires kernel;
+	requires io;
 	requires java.desktop;
 	requires java.prefs;
 	requires javafx.base;

@@ -56,6 +56,10 @@ directory. This is best done when you are not behind a corporate firewall.
 
 ## Change log
 
+### Version 2.0.0 beta 4: 1 June 2023
+
+- Refactor to use iText 8 instead of iText 5
+
 ### Version 2.0.0 beta 3: 18 April 2023
 
 - add window icon
