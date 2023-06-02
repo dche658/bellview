@@ -54,23 +54,23 @@ distribution archive in the /bellview-master/app/build/distributions
 directory. This is best done when you are not behind a corporate firewall.
 
 
-## Change log
+### Change log
 
-### Version 2.0.0 beta 4: 1 June 2023
+**Version 2.0.0 beta 4: 1 June 2023**
 
 - Refactor to use iText 8 instead of iText 5
 
-### Version 2.0.0 beta 3: 18 April 2023
+**Version 2.0.0 beta 3: 18 April 2023**
 
 - add window icon
 - fixes to dialog titles
 - bump to javafx 20
 
-### Version 2.0.0 beta 2: 11 April 2023
+**Version 2.0.0 beta 2: 11 April 2023**
 
 - Fix update of analyte when importing data
 
-### Version 2.0.0 beta 1: 2 April 2023
+**Version 2.0.0 beta 1: 2 April 2023**
 
 - Change user interface to javafx 17 LTS
 - Removed support for gamma distribution
@@ -78,31 +78,31 @@ directory. This is best done when you are not behind a corporate firewall.
 - Support log transformation of the form log(x+C)
 - Remove requirement for Apache Derby and just store data in RAM
 
-### Version 1.2.6: 16 Dec 2021
+**Version 1.2.6: 16 Dec 2021**
 
 - Bump log4j2 dependency to 2.16.0. 
 - Bump Apache Derby dependency to 10.14.2.0 which is still compatible with java 8. 
 - Use default look and feel instead of forcing to Nimbus.
 
-### Version 1.2.5: 4 Feb 2021
+**Version 1.2.5: 4 Feb 2021**
 
 - Minor refactoring to use Apache POI 4.1.2. 
 - Fix Excel importer to read sample data that includes non-numeric formulas. 
 
-### Version 1.2.4: 16 Jan 2021
+**Version 1.2.4: 16 Jan 2021**
 
 - Change to BSD license.
 
-### Version 1.2: 
+**Version 1.2:**
 
 - No additional features but internals updated to replace deprecated
 - APIs and run under java 1.8 to 12. This version will only run on java 1.8 or above.
 
-### Version 1.1
+**Version 1.1**
 
 - Added ability to import data from excel (.xlsx) spreadsheets using Apache POI.
 
-### Version 1.0: Original release
+**Version 1.0: Original release**
 
 - Some time ago. I cannot remember when.
 

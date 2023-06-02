@@ -145,6 +145,10 @@ public class PdfReportWriter implements ReportWriter {
 		ImageIO.write(SwingFXUtils.fromFXImage(image, null), "png", baos);
 		ImageData id = ImageDataFactory.create(baos.toByteArray());
 		Image graphImg = new Image(id);
+		graphImg.setAutoScale(false);
+		double width = image.getWidth();
+		float scalingFactor = (float) (300f/width);
+		graphImg.scale(scalingFactor, scalingFactor);
 		return graphImg;
 	}
 	

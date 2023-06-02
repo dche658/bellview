@@ -436,8 +436,10 @@ public class FXMLController {
 			if (report.getAnalyte().getUnits() == null || report.getAnalyte().getUnits().length() == 0)
 				throw new BellviewException("Units must be specified");
 			String directoryString = preferences.get(DEFAULT_EXPORT_DIRECTORY, ".");
+			File exportDir = new File(directoryString);
+			if (!exportDir.exists()) exportDir = new File(".");
 			DirectoryChooser chooser = new DirectoryChooser();
-			chooser.setInitialDirectory(new File(directoryString).getParentFile());
+			chooser.setInitialDirectory(exportDir);
 			File selectedDir = chooser.showDialog(stage);
 			preferences.put(DEFAULT_EXPORT_DIRECTORY, selectedDir.getAbsolutePath());
 			StringBuilder filename = new StringBuilder();
