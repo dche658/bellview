@@ -445,6 +445,12 @@ public class FXMLController {
 			StringBuilder filename = new StringBuilder();
 			filename.append(report.getAnalyte().getName().toLowerCase()).append("-rpt.pdf");
 			File file = new File(selectedDir, filename.toString());
+			try {
+				file.createNewFile();
+			} catch (IOException ioe) {
+				logger.error("Error creating report file",ioe);
+				throw new BellviewException(file.getAbsolutePath()+" could not be created");
+			}
 			SnapshotParameters parameters = new SnapshotParameters();
 			
 			//Write the report to file

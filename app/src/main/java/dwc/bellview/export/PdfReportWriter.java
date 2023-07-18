@@ -7,6 +7,9 @@ import java.text.SimpleDateFormat;
 
 import javax.imageio.ImageIO;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.itextpdf.kernel.colors.Color;
 import com.itextpdf.kernel.colors.DeviceRgb;
 import com.itextpdf.kernel.events.Event;
@@ -45,7 +48,7 @@ import javafx.scene.image.WritableImage;
 
 public class PdfReportWriter implements ReportWriter {
 	
-//	private static final Logger LOG = LoggerFactory.getLogger(PdfReportWriter.class);
+	private static final Logger LOG = LoggerFactory.getLogger(PdfReportWriter.class);
 	
 	private SimpleDateFormat dateFormat = new SimpleDateFormat(BellviewUtils.getMessage("report.date.format"));
 	private Report report;
@@ -69,17 +72,28 @@ public class PdfReportWriter implements ReportWriter {
 	@Override
 	public void writeReport(File file) throws BellviewException {
 		Document document = null;
-		
+		LOG.debug("Begin write PDF report");
 		try {                
 			PdfWriter writer = new PdfWriter(file);
+			LOG.debug("Created PDF writer");
 			PdfDocument pdf = new PdfDocument(writer);
+			LOG.debug("Created PDF document");
 			document = new Document(pdf, PageSize.A4);
+			LOG.debug("Created report document");
 			pdf.addEventHandler(PdfDocumentEvent.END_PAGE, new TextFooterEventHandler(document));
+			LOG.debug("Begin build document");
             buildDocument(document);
+            document.close();
+            LOG.debug("PDF report closed");
+            document = null;
         } catch (IOException ex) {
+        	LOG.error("Exception writing PDF", ex);
         	throw new BellviewException(BellviewUtils.getMessage("error.analysis.pdf"),ex); 
         } finally {
-        	if (document != null) document.close();
+        	if (document != null) {
+                document.close();
+                LOG.debug("PDF document close");
+            }
         }
 	}
 	
@@ -108,6 +122,7 @@ public class PdfReportWriter implements ReportWriter {
         phrase0.add(" ");
         phrase0.add(report.getAnalyte().getName());
         doc.add(phrase0);
+        LOG.debug("Add Paragraph 0");
         
         Paragraph phrase1 = new Paragraph();
         Text lblAnalyteUnits = new Text(BellviewUtils.getMessage("report.label.analyte.units"));
@@ -116,28 +131,40 @@ public class PdfReportWriter implements ReportWriter {
         phrase1.add(" ");
         phrase1.add(report.getAnalyte().getUnits());
         doc.add(phrase1);
+        LOG.debug("Add Paragraph 1");
+        
         Paragraph phraseDate = new Paragraph();
         Text lblDate = new Text(BellviewUtils.getMessage("label.date")+" ");
         lblDate.setFont(BOLD);
         phraseDate.add(lblDate);
         phraseDate.add(dateFormat.format(new java.util.Date()));
         doc.add(phraseDate);
+        LOG.debug("Add Paragraph 3");
+        
         doc.add(new Paragraph(" "));
         
         doc.add(getTable1());
+        LOG.debug("Add Table 1");
         
         doc.add(new Paragraph(" "));
         doc.add(getTable2());
+        LOG.debug("Add Table 2");
+        
         doc.add(new AreaBreak());
         Image histogramImg = getPdfImage(histogramImage);
         histogramImg.setHorizontalAlignment(HorizontalAlignment.CENTER);
         doc.add(histogramImg);
+        LOG.debug("Add Chart 1");
+        
         Image logDiffImg = getPdfImage(bhattacharyaImage);
         logDiffImg.setHorizontalAlignment(HorizontalAlignment.CENTER);
         doc.add(logDiffImg);
+        LOG.debug("Add Chart 2");
+        
         Image residualsImg = getPdfImage(residualsImage);
         residualsImg.setHorizontalAlignment(HorizontalAlignment.CENTER);
         doc.add(residualsImg);
+        LOG.debug("Add Chart 3");
     }
 	
 	private Image getPdfImage(WritableImage image) throws IOException {
@@ -265,12 +292,12 @@ public class PdfReportWriter implements ReportWriter {
             try {
                 font = PdfFontFactory.createFont(StandardFonts.HELVETICA);
             } catch (IOException e) {
-
                 // Such an exception isn't expected to occur,
                 // because helvetica is one of standard fonts
-                System.err.println(e.getMessage());
+                LOG.error(e.getMessage());
             }
 
+            LOG.debug("Writing document footer");
             float coordX = pageSize.getRight() - doc.getRightMargin();
             //float headerY = pageSize.getTop() - doc.getTopMargin() + 10;
             float footerY = doc.getBottomMargin();

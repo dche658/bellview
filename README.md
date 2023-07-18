@@ -56,6 +56,10 @@ directory. This is best done when you are not behind a corporate firewall.
 
 ### Change log
 
+**Version 2.0.1: 18 July 2023**
+
+- Change to non-modular application to fix problem with exporting PDF
+
 **Version 2.0.0 beta 4: 1 June 2023**
 
 - Refactor to use iText 8 instead of iText 5
@@ -105,4 +109,3 @@ directory. This is best done when you are not behind a corporate firewall.
 **Version 1.0: Original release**
 
 - Some time ago. I cannot remember when.
-
