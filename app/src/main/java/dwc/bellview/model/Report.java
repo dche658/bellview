@@ -47,12 +47,10 @@ public class Report {
 	}
 
 
-	@SuppressWarnings("exports")
 	public void setRegression(SimpleRegression reg) {
 		this.reg = reg;
 	}
 	
-	@SuppressWarnings("exports")
 	public SimpleRegression getRegression() {
 		return this.reg;
 	}
