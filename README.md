@@ -12,32 +12,58 @@ data.
 
 ## Installation
 
-If a Java Runtime Environment (JRE) or Java Development Kit (JDK) is not 
-available on your system you can install from one of the installer packages 
-(deb file on Linux or exe on Windows). These include a JRE image and
-should run out of the box once installation is complete.
+Application installer packages are available for Windows and Linux 
+(bellview-x.x.x-win.exe and bellview-x.x.x-linux_amd64.deb respectively)
 
-If you do have a JRE or JDK installed (Version 17 or later is required) 
-you have the option of running from the binary distribution files
-(tar or zip archives). Suitable JREs or JDKs are available from 
+These packages include a JRE image and should run out of the box once 
+installation is complete.
+
+The zip binary Bellview-x.x.x-bin.zip can be run on any platform but requires
+a Java Runtime Environment (JRE) or Java Development Kit JDK (Version 17
+or later) and JavaFX installed. Startup scripts can be found in the bin directory
+but you will need to set the JAVA_HOME environment variable to the location of
+your JDK or JRE first. 
+
+Suitable JREs or JDKs are available from
 [https://adoptium.net/](https://adoptium.net/) or 
 [https://www.azul.com/](https://www.azul.com/)
 
-Extract the zip or tar archive and execute the startup script for your
-operating system
+JavaFX SDKs are available from 
+[https://gluonhq.com/products/javafx/](https://gluonhq.com/products/javafx/) 
+alternatively, Azul has JRE or JDK packages that include JavaFX (JRE FX, and JDK FX).
+At the time of writing these could be downloaded from 
+[https://www.azul.com/downloads/?package=jdk#zulu](https://www.azul.com/downloads/?package=jdk#zulu) 
+but make sure you scroll down the page a bit and select the correct package 
+and version (17 or later)
 
-Windows
+### Windows
 
-	bin/bellview.bat
+Search for the option to edit environment variables for your account.
+Alternatively, from the Control Panel -> System and Security -> System 
+-> Advanced system settings -> Environment Variables
+
+Create a new entry with variable name JAVA_HOME, and variable value the
+path to your JDK or JRE (typically something like 
+\Program Files\Java\zulu17.40.19-ca-fx-jre17.0.6-win_x64)
+
+Alternatively JAVA_HOME can be set directly in the startup script. 
+See line 20 of app.bat, remove the @rem statement, and update the path as 
+necessary.
+
+The application can then be started with:
+
+	bin/app.bat
 	
-Linux
 
-	bin/bellview
+### Linux or Mac
 
-Mac owners will need to build the application from the source files which
-are available at
+	bin/app
+	
+
+## Source
+
+The source files are available from
 [https://github.com/dche658/bellview](https://github.com/dche658/bellview).
-Windows and Linux users have the option of doing the same if they wish.
 
 At the GitHub repository, if you click on the green "<> Code" button you 
 should see a link to "Download ZIP". Download and then extract the
@@ -45,14 +71,16 @@ bellview-master.zip archive.
 
 Open a terminal window and change to the bellview-master directory.
 
-Run the command 
+To build a platform specific installer, run the command 
 
-    gradlew assemble
+    gradlew jpackage
     
-Hopefully, this will download all the necessary dependencies and install the zip 
-distribution archive in the /bellview-master/app/build/distributions
-directory. This is best done when you are not behind a corporate firewall.
+Hopefully, this will download all the necessary dependencies and create the
+installer package in /bellview/app/build/jpackage
 
+Alternatively to build a runtime image execute
+
+		gradlew runtime
 
 ### Change log
 

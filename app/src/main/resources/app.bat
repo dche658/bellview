@@ -1,7 +1,7 @@
 @if "%DEBUG%" == "" @echo off
 @rem ##########################################################################
 @rem
-@rem  bellview startup script for Windows
+@rem  app startup script for Windows
 @rem
 @rem ##########################################################################
 
@@ -14,10 +14,10 @@ if "%DIRNAME%" == "" set DIRNAME=.
 set APP_BASE_NAME=%~n0
 set APP_HOME=%DIRNAME%..
 
-@rem Add default JVM options here. You can also use JAVA_OPTS and BELLVIEW_OPTS to pass JVM options to this script.
+@rem Add default JVM options here. You can also use JAVA_OPTS and APP_OPTS to pass JVM options to this script.
 set DEFAULT_JVM_OPTS=
 
-set JAVA_HOME="%APP_HOME%"
+@rem set JAVA_HOME="C:\Program Files\Java\zulu17.40.19-ca-fx-jre17.0.6-win_x64"
 set JAVA_EXE=%JAVA_HOME%\bin\javaw.exe
 set JAVA_EXE="%JAVA_EXE:"=%"
 
@@ -49,21 +49,21 @@ set CMD_LINE_ARGS=%*
 :execute
 @rem Setup the command line
 
-set CLASSPATH="%JAVA_HOME:"=%/lib/*"
+set CLASSPATH="%APP_HOME:"=%/lib/*"
 
 
 
-@rem Execute bellview
-start "bellview" %JAVA_EXE% %DEFAULT_JVM_OPTS% %CDS_JVM_OPTS% %JAVA_OPTS% %BELLVIEW_OPTS%  -classpath %CLASSPATH% dwc.bellview.App %CMD_LINE_ARGS%
+@rem Execute app
+start "app" %JAVA_EXE% %DEFAULT_JVM_OPTS% %CDS_JVM_OPTS% %JAVA_OPTS% %APP_OPTS%  -classpath %CLASSPATH% dwc.bellview.App %CMD_LINE_ARGS%
 
 :end
 @rem End local scope for the variables with windows NT shell
 if "%ERRORLEVEL%"=="0" goto mainEnd
 
 :fail
-rem Set variable BELLVIEW_EXIT_CONSOLE if you need the _script_ return code instead of
+rem Set variable APP_EXIT_CONSOLE if you need the _script_ return code instead of
 rem the _cmd.exe /c_ return code!
-if  not "" == "%BELLVIEW_EXIT_CONSOLE%" exit 1
+if  not "" == "%APP_EXIT_CONSOLE%" exit 1
 exit /b 1
 
 :mainEnd
