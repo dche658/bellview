@@ -57,6 +57,16 @@ The application can then be started with:
 
 ### Linux or Mac
 
+The JAVA_HOME environment variable can be configured in the usual way for
+your shell such as .bashrc or .zshrc
+
+Alternatively JAVA_HOME can be set directly startup script. See line 70 of
+bin/app, uncomment the line and update the path as needed. On Debian based 
+systems this will be typically JAVA_HOME="/usr/lib/jvm/zulu-fx-17-amd64"
+
+Ensure permissions have been updated so that the startup script can be 
+executed, then start with:
+
 	bin/app
 	
 
